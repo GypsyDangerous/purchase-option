@@ -22,10 +22,6 @@ const SignIn: NextPage = () => {
         setActiveStep(0);
     };
 
-    const isStepOptional = (step: number) => {
-        return step === 1;
-    };
-
     const isStepSkipped = (step: number) => {
         return skipped.has(step);
     };
@@ -53,14 +49,7 @@ const SignIn: NextPage = () => {
                     const labelProps: {
                         optional?: React.ReactNode;
                     } = {};
-                    if (isStepOptional(index)) {
-                        labelProps.optional = (
-                            <Typography variant="caption">Optional</Typography>
-                        );
-                    }
-                    if (isStepSkipped(index)) {
-                        stepProps.completed = false;
-                    }
+
                     return (
                         <Step key={label} {...stepProps}>
                             <StepLabel {...labelProps}>{label}</StepLabel>
